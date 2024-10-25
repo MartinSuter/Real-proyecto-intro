@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Donaciones</title>
+    <style>
+        body {
+            background-color: rgb(174, 215, 223);
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+        form {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 80%;
+            max-width: 600px;
+        }
+        label {
+            margin-bottom: 5px;
+        }
+        input, textarea, select {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            width: 100%;
+        }
+        button {
+            padding: 10px;
+            border: 2px solid #000;
+            border-radius: 5px;
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Formulario de Donaciones</h1>
+    <form id="donationForm" action="{% url 'procesar_donacion' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        <label for="file">Subir archivo audiovisual:</label>
+        <input type="file" id="file" name="file" accept="video/*,audio/*" required>
+
+        <label for="year">¿De qué año es el objeto a donar?</label>
+        <input type="date" id="year" name="year" required>
+
+        <label for="reason">¿Por qué desea donarlo?</label>
+        <textarea id="reason" name="reason" rows="4" required></textarea>
+
+        <label for="summary">Escriba un breve resumen de la adquisición del objeto a donar:</label>
+        <textarea id="summary" name="summary" rows="4" required></textarea>
+
+        <button type="submit">Enviar</button>
+    </form>
+</body>
+</html>

@@ -22,6 +22,6 @@ urlpatterns = [
     path("", include("app.urls")),
     path("app/", include("app.urls")),
     path('admin/', admin.site.urls),
-    path("registro/", views.peticion_donacion),
+    path("registr/", views.peticion_donacion),
     path("donar/", views.donar),
 ]
